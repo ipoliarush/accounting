@@ -6,7 +6,7 @@ const ProductSchema = new Schema({
     required: true,
     trim: true
   },
-  vendor_code: {
+  vendorCode: {
     type: Number,
     required: true,
     trim: true
