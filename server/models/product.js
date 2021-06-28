@@ -28,6 +28,10 @@ const ProductSchema = new Schema({
     get: getPrice, 
     set: setPrice
   },
+  groupId: {
+    type: Schema.Types.ObjectId,s
+    ref: 'Group'
+  },
 }, {
   timestamps: {
     createdAt: 'createdAt',
