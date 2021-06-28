@@ -29,7 +29,7 @@ const ProductSchema = new Schema({
     set: setPrice
   },
   groupId: {
-    type: Schema.Types.ObjectId,s
+    type: Schema.Types.ObjectId,
     ref: 'Group'
   },
 }, {
