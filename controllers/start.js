@@ -1,6 +1,7 @@
 import bot from '../telegram.js'
 import User from '../models/users.js'
 import { getMainMenuKeyboard } from '../telegram/keyboards.js'
+import STATE from '../state/state.js'
 
 export default function startCommand() {
   bot.onText(/\/start/, msg => {
@@ -10,6 +11,7 @@ export default function startCommand() {
         return bot.sendMessage(msg.chat.id, 'Возникли проблемы. Попробуйте еще раз.')
       } else if(user) {
         //Показать главное меню если пользователь зарегистрирован
+        STATE[msg.chat.id] = 'main_menu'
         return bot.sendMessage(msg.chat.id, `Выберите интересующий раздел:`, getMainMenuKeyboard())
       } 
       //Сообщить админу если незарегистрированый пользователь вошел в бот

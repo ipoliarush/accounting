@@ -12,6 +12,14 @@ export function getMainMenuKeyboard() {
   }
 }
 
+export function getBackKeyboard() {
+  return {
+    inline_keyboard: [
+      [{ text: "Главное меню", callback_data: 'main_menu'}]
+    ]
+  }
+}
+
 export function getProductsKeyboard() {
   return {
     "parse_mode": "HTML",
@@ -31,9 +39,43 @@ export function getSaveProductsKeyboard() {
     "reply_markup": {
       "resize_keyboard": true,
       "inline_keyboard": [
-        [{ text: "Сохранить", callback_data: 'save_product'}],
-        [{ text: "Главное меню", callback_data: 'main_menu'}]
+        [{ text: "Сохранить", callback_data: 'save_product' }],
+        [{ text: "Главное меню", callback_data: 'main_menu' }]
       ]
+    }
+  }
+}
+
+export function getDeleteGroupKeyboard(group) {
+  let inline_keyboard = []
+  for(const element of group) {
+    inline_keyboard.push([{ text: element.name, callback_data: `group_id_${element.id}` }])
+  }
+  inline_keyboard.push([{ text: "Главное меню", callback_data: 'main_menu' }])
+
+  return {
+    "parse_mode": "HTML",
+    "reply_markup": {
+      "resize_keyboard": true,
+      "inline_keyboard": 
+        inline_keyboard
+    }
+  }
+}
+
+export function getDeleteProductKeyboard(product) {
+  let inline_keyboard = []
+  for(const element of product) {
+    inline_keyboard.push([{ text: element.name, callback_data: `product_id_${element._id}` }])
+  }
+  inline_keyboard.push([{ text: "Главное меню", callback_data: 'main_menu' }])
+
+  return {
+    "parse_mode": "HTML",
+    "reply_markup": {
+      "resize_keyboard": true,
+      "inline_keyboard": 
+        inline_keyboard
     }
   }
 }
